@@ -2,20 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apim-deployment
+  namespace: apim
   labels:
-    app: apim
+    app: apim-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: apim
+      app: apim-app
   template:
     metadata:
       labels:
-        app: apim
+        app: apim-app
     spec:
       containers:
-      - name: apim
+      - name: apim-app
         image: wso2/wso2am:4.0.0
         ports:
         - containerPort: 8443
@@ -27,5 +28,5 @@ spec:
             memory: "2Gi"
             cpu: "2"
           limits:
-            memory: "4Gi"
-            cpu: "4"
+            memory: "3Gi"
+            cpu: "3"
